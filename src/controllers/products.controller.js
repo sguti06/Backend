@@ -15,7 +15,7 @@ export const postProduct = async (request, response) => {
         // La informacion la enviamos en el cuerpo de la peticion -> es decir, en el "body"
         const newProduct = await productModel.create(request.body); //asi se crean las colecciones en la base de datos
         return response.status(201).json({
-            mensaje: "el producto se creo satisfactoriamente",
+            mensaje: "El producto se creo satisfactoriamente",
             datos: newProduct
         })
 
