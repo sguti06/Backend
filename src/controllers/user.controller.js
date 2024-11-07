@@ -51,12 +51,28 @@ export const createUser = async(req, res)=>{
 };
 
 // Peticion Get -> Mostrar todos los usuarios
-export const showUser = async()=>{
+export const showUser = async(req, res)=>{
     // manejo de errores -> atrapar lo que pueda salir mal
     try {
 
+        let users = await userModel.find();
+        // validacion de si no se encuentran usuarios almacenados
+        if(users.length === 0){
+            return res.status(200).json({
+                mensaje: "No hay usuarios almacenados"
+            })
+        }
+
+        return res.status(200).json({
+            mensaje: "Se encontro el usuario almacenado",
+            numeroUsuarios: users.length,
+            datos: users
+            // nombres: users [0].fullName,
+            // usuario2: users[0]
+        })
+
     } catch (error) {
-        return req.status(400).json({
+        return res.status(400).json({
             mensaje: "Ocurrio un error al mostrar el usuario",
             problema: error || error.message
         });
