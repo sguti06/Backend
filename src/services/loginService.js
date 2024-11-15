@@ -90,11 +90,9 @@ const login = async (request, response)=>{
         });
 
 
-
-
     } catch (error) {
 
-        // cuando no se puedo iniciar sesion por algun error y no se genera token
+        // cuando no se puedo iniciar sesion por algun error y NO se genera token
         return response.status(400).json({
             mensaje: "Hubo un error al iniciar sesion",
             error: error.menssage || error
@@ -102,3 +100,7 @@ const login = async (request, response)=>{
     }
 
 }
+
+
+// 3. EXPORTAR LA FUNCION
+export default login

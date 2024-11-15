@@ -7,6 +7,7 @@ import dotenv from "dotenv"; //dependencia para manejar variables de entorno
 import { connectionMongo } from "./src/config/dataBase.js";
 import { productRouter } from "./src/routes/products.routes.js"; //importé mis rutas
 import { usersRouter } from "./src/routes/user.routes.js";
+import loginRouter from "./src/routes/login.routes.js";
 
 
 // 2. CONFIGURAR EL USO DE NUESTRO SERVIDOR
@@ -19,6 +20,7 @@ const port = process.env.PORT//6000, 9000
 app.use(express.json()); //para poder usar formato json -> crear y actualizar 
 app.use("/productos", productRouter);
 app.use("/usuarios", usersRouter);
+app.use("/iniciarSesion", loginRouter);
 
 // 3. EJECUTAR EL SERVIDOR EN NUESTRO COMPUTADOR
 app.listen(port, ()=>{
